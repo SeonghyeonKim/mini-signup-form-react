@@ -3,7 +3,7 @@ import Form from './components/Form'
 import Footer from './components/Footer'
 import FontControlBox from './components/FontControlBox'
 import Modal from './components/Modal'
-import { createContext, useState } from 'react'
+import { createContext, useRef, useState } from 'react'
 
 const initialFormData = {
     id: '',
@@ -18,15 +18,16 @@ export const FormContext = createContext({
 
 function App() {
     const [formData, setFormData] = useState(initialFormData);
+    const modalRef = useRef(null);
 
     return (
         <FormContext.Provider value={{ formData, setFormData }}>
             <section className="form-wrapper">
-                <Form />
+                <Form modalRef={modalRef} />
                 <Footer />
             </section>
             <FontControlBox />
-            <Modal />
+            <Modal ref={modalRef} />
         </FormContext.Provider>
     )
 }

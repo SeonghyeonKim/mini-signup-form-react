@@ -1,4 +1,5 @@
 const FontControlBox = () => {
+
   return (
     <aside
       id="font-control-box"
